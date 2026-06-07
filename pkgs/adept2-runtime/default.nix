@@ -65,7 +65,7 @@ stdenv.mkDerivation rec {
 
     cat > $out/etc/udev/rules.d/52-digilent-usb.rules <<EOF
     ACTION=="add", ATTR{idVendor}=="1443", GROUP="plugdev", TAG+="uaccess"
-    ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", GROUP="plugdev", TAG+="uaccess""
+    ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", GROUP="plugdev", TAG+="uaccess"
     EOF
 
     runHook postInstall
