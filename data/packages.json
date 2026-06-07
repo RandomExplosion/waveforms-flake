@@ -3,7 +3,7 @@
     "version": "2.30.1",
     "systems": {
       "x86_64-linux": {
-        "url": "https://files.digilent.com/Software/Adept2%20Runtime/2.30.1/digilent.adept.runtime_2.30.1-amd64.deb",
+        "url": "https://files.digilent.com/Software/Adept2%20Runtime/2.30.1/digilent.adept.runtime_2.30.1_amd64.deb",
         "hash": "sha256-5eUdJkDC/zTvO0NvO983g4EgsVFg1z37q4LpB3O2s3I="
       },
       "i686-linux": {
