@@ -1,13 +1,14 @@
-{ lib
-, stdenv
-, runtimeShell
-, fetchurl
-, autoPatchelfHook
-, dpkg
-, qt5
-, xdg-utils
-, shared-mime-info
-, adept2-runtime
+{
+  lib,
+  stdenv,
+  runtimeShell,
+  fetchurl,
+  autoPatchelfHook,
+  dpkg,
+  qt5,
+  xdg-utils,
+  shared-mime-info,
+  adept2-runtime,
 }:
 
 let
@@ -26,11 +27,26 @@ stdenv.mkDerivation {
 
   src = fetchurl {
     inherit (srcInfo) url hash;
+    curlOptsList = [
+      "-A"
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+    ];
   };
 
-  nativeBuildInputs = [ dpkg autoPatchelfHook qt5.wrapQtAppsHook shared-mime-info ];
+  nativeBuildInputs = [
+    dpkg
+    autoPatchelfHook
+    qt5.wrapQtAppsHook
+    shared-mime-info
+  ];
 
-  buildInputs = [ adept2-runtime qt5.qtbase qt5.qtscript qt5.qtmultimedia qt5.qtserialport ];
+  buildInputs = [
+    adept2-runtime
+    qt5.qtbase
+    qt5.qtscript
+    qt5.qtmultimedia
+    qt5.qtserialport
+  ];
 
   runtimeDependencies = [ adept2-runtime ];
 

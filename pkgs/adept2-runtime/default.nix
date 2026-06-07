@@ -1,10 +1,11 @@
-{ lib
-, stdenv
-, fetchurl
-, autoPatchelfHook
-, libusb1
-, avahi
-, dpkg
+{
+  lib,
+  stdenv,
+  fetchurl,
+  autoPatchelfHook,
+  libusb1,
+  avahi,
+  dpkg,
 }:
 
 let
@@ -21,11 +22,22 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     inherit (srcInfo) url hash;
+    curlOptsList = [
+      "-A"
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+    ];
   };
 
-  nativeBuildInputs = [ dpkg autoPatchelfHook ];
+  nativeBuildInputs = [
+    dpkg
+    autoPatchelfHook
+  ];
 
-  buildInputs = [ stdenv.cc.cc.lib libusb1 avahi ];
+  buildInputs = [
+    stdenv.cc.cc.lib
+    libusb1
+    avahi
+  ];
 
   unpackCmd = "dpkg -x $curSrc out";
 
