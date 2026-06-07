@@ -43,7 +43,6 @@ stdenv.mkDerivation {
   buildInputs = [
     adept2-runtime
     qt6.qtbase
-    qt6.qtscript
     qt6.qtmultimedia
     qt6.qtserialport
   ];
