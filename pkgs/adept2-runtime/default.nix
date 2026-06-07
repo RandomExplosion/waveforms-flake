@@ -52,9 +52,11 @@ stdenv.mkDerivation rec {
 
     ls
     cp -a usr/lib*/digilent/adept $out/lib
-    # Used in prior versions
+    # Used in prior versions but not present in current release
     # cp -a usr/sbin $out/
     cp -a usr/share/{doc,digilent} $out/share/
+
+    # ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", GROUP="plugdev", TAG+="uaccess", RUN+="$out/sbin/dftdrvdtch %s{busnum} %s{devnum}"
 
     cat > $out/etc/digilent-adept.conf <<EOF
     DigilentPath=$out/share/digilent
@@ -63,7 +65,7 @@ stdenv.mkDerivation rec {
 
     cat > $out/etc/udev/rules.d/52-digilent-usb.rules <<EOF
     ACTION=="add", ATTR{idVendor}=="1443", GROUP="plugdev", TAG+="uaccess"
-    ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", GROUP="plugdev", TAG+="uaccess", RUN+="$out/sbin/dftdrvdtch %s{busnum} %s{devnum}"
+    ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", GROUP="plugdev", TAG+="uaccess""
     EOF
 
     runHook postInstall
