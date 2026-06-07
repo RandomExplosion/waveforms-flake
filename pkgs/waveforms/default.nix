@@ -5,7 +5,7 @@
   fetchurl,
   autoPatchelfHook,
   dpkg,
-  qt5,
+  qt6,
   xdg-utils,
   shared-mime-info,
   adept2-runtime,
@@ -36,16 +36,16 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     dpkg
     autoPatchelfHook
-    qt5.wrapQtAppsHook
+    qt6.wrapQtAppsHook
     shared-mime-info
   ];
 
   buildInputs = [
     adept2-runtime
-    qt5.qtbase
-    qt5.qtscript
-    qt5.qtmultimedia
-    qt5.qtserialport
+    qt6.qtbase
+    qt6.qtscript
+    qt6.qtmultimedia
+    qt6.qtserialport
   ];
 
   runtimeDependencies = [ adept2-runtime ];
