@@ -52,6 +52,7 @@ stdenv.mkDerivation rec {
 
     ls
     cp -a usr/lib*/digilent/adept $out/lib
+    # Used in prior versions
     # cp -a usr/sbin $out/
     cp -a usr/share/{doc,digilent} $out/share/
 
