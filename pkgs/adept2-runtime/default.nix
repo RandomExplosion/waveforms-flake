@@ -6,6 +6,7 @@
   libusb1,
   avahi,
   dpkg,
+  openssl,
 }:
 
 let
@@ -37,6 +38,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
     libusb1
     avahi
+    openssl
   ];
 
   unpackCmd = "dpkg -x $curSrc out";
@@ -48,8 +50,9 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/{etc,share} $out/etc/udev/rules.d
 
+    ls
     cp -a usr/lib*/digilent/adept $out/lib
-    cp -a usr/sbin $out/
+    # cp -a usr/sbin $out/
     cp -a usr/share/{doc,digilent} $out/share/
 
     cat > $out/etc/digilent-adept.conf <<EOF
